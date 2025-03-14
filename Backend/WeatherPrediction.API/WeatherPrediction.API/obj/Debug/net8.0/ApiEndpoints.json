@@ -1,0 +1,23 @@
+[
+  {
+    "ContainingType": "WeatherPrediction.API.Controllers.WeatherForecastController",
+    "Method": "GetForecast",
+    "RelativePath": "api/weather/forecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "offlineMode",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

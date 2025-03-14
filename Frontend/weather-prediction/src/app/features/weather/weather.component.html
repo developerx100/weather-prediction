@@ -1,0 +1,22 @@
+<mat-card class="weather-card">
+  <mat-card-header>
+    <mat-card-title>Weather Forecast</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Enter City</mat-label>
+        <input matInput [(ngModel)]="city" placeholder="e.g., London">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="getWeather()">Get Weather</button>
+    </div>
+
+    <mat-progress-spinner *ngIf="loading" mode="indeterminate"></mat-progress-spinner>
+
+    <div *ngIf="weatherData" class="weather-info">
+      <h2>{{ weatherData.city }}</h2>
+      <p><strong>Temperature:</strong> {{ weatherData.temp }}°C</p>
+      <p><strong>Condition:</strong> {{ weatherData.condition }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

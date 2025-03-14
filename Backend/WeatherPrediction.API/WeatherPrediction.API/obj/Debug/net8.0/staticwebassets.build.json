@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Qtak1tTN4DQnrT4HEQpcbQF03LF3BEcr4+5T20Zgz58=",
+  "Source": "WeatherPrediction.API",
+  "BasePath": "_content/WeatherPrediction.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

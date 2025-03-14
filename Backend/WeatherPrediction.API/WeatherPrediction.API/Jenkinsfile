@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    environment {
+        IMAGE_NAME = "weather-api"
+        DOCKER_REGISTRY = "your-dockerhub-username/weather-api"
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/your-repo/weather-prediction.git'
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                sh 'dotnet build --configuration Release'
+                sh 'dotnet test --configuration Release'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t ${IMAGE_NAME}:latest .'
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
+                    sh 'docker tag ${IMAGE_NAME}:latest ${DOCKER_REGISTRY}:latest'
+                    sh 'docker push ${DOCKER_REGISTRY}:latest'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker-compose down'
+                sh 'docker-compose up -d'
+            }
+        }
+    }
+}

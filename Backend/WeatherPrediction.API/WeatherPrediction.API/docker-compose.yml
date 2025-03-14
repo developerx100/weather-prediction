@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  weather-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - OpenWeatherMap_ApiKey=${API_KEY}  # Secure API key from .env file
+
+  weather-ui:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html
