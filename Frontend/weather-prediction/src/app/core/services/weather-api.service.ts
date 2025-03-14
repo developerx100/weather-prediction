@@ -23,8 +23,8 @@ export class WeatherApiService {
         console.log('API Response:', response);
         return {
           city: city,
-          temp: response[0]?.highTemp ?? 'N/A',
-          condition: response[0]?.advice ?? 'No advisory available'
+          temp: response.forecast[0]?.highTemp ?? 'N/A',
+          condition: response.forecast[0]?.advice ?? 'No advisory available'
         };
       }),
       catchError(error => {
